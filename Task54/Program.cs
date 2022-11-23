@@ -85,7 +85,7 @@ int[,] SortColumnsMatrixAscend(int[,] matrix)
     return matrix;
 }
 
-int[,] array2D = CreateMatrixRndInt(10, 10, 1, 100);
+int[,] array2D = CreateMatrixRndInt(10, 10, 10, 100);
 PrintMatrix(array2D);
 Console.WriteLine(" ");
 

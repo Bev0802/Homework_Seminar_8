@@ -32,17 +32,17 @@ void PrintMatrix(int[,] matrix)
         Console.Write("|");
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i, j],5} | ");
-            else Console.Write($"{matrix[i, j],5}");
+            if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i, j],3} | ");
+            else Console.Write($"{matrix[i, j],3}");
         }
-        Console.WriteLine("|");
+        Console.WriteLine(" |");
     }
 }
 
-//метод находит сумму срок массива
+//метод находит сумму строк массива
 int[] SumRowsMatrix(int[,] matrix)
 {
-    int[] SumRowsMat = new int [matrix.GetLength(0)];
+    int[] SumRowsMat = new int[matrix.GetLength(0)];
 
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -53,7 +53,7 @@ int[] SumRowsMatrix(int[,] matrix)
         {
             num = matrix[i, j];
             //Console.Write($"{sum}, ");
-            sum+= num;
+            sum += num;
         }
         SumRowsMat[i] = sum;
     }
@@ -74,12 +74,33 @@ void PrintArray(int[] array)
     //Console.Write("] ");
 }
 
+//метод находит номер строки с наименьшим числом.
+int NumberRowSmallestSumElements(int[] array)
+{
+    int min = array[0];
+    int row = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] < min)
+        {
+            min = array[i];
+            row = i+1;
+        }
 
+    }
+    return row;
+}
 
-int[,] array2D = CreateMatrixRndInt(3, 4, 1, 10);
+//ПРОГРАММА
+int[,] array2D = CreateMatrixRndInt(5, 5, 1, 10);
 PrintMatrix(array2D);
-Console.WriteLine("");
+Console.WriteLine(" ");
 
 Console.Write("Суммы строк массива: ");
 int[] sumRowsMatrix = SumRowsMatrix(array2D);
 PrintArray(sumRowsMatrix);
+Console.WriteLine(" ");
+
+//Вывод результата
+int numberRowSmallestSumElements = NumberRowSmallestSumElements(sumRowsMatrix);
+Console.Write($"Номер строки с наименьшей суммой элементов: {numberRowSmallestSumElements}");
