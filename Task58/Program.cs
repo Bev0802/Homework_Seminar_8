@@ -44,17 +44,17 @@ int [,] ProductMatrices(int[,]mat1,int[,]mat2)
 {
     int [,] ProductMatrices = new int [mat1.GetLength(0),mat2.GetLength(1)];
        
-    for (int rowsMat1 = 0; rowsMat1 < mat1.GetLength(0); rowsMat1++)
+    for (int i = 0; i < mat1.GetLength(0); i++)
     {
-        for (int columnsMat2 = 0; columnsMat2 < mat2.GetLength(1); columnsMat2++)
+        for (int j = 0; j < mat2.GetLength(1); j++)
         {
              int sum = 0;
-            for (int columnsMat1 = 0; columnsMat1 < mat1.GetLength(1); columnsMat1++)
+            for (int k = 0; k < mat1.GetLength(1); k++)
             {
                
-                sum += mat1[rowsMat1,columnsMat1] * mat2[columnsMat1,columnsMat2];
+                sum += mat1[i,k] * mat2[k,j];
             }
-            ProductMatrices[rowsMat1,columnsMat2] = sum;
+            ProductMatrices[i,j] = sum;
         }
     }
     return ProductMatrices;
